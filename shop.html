@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <head>
+        <title>Shop</title>
+        <style>
+            .task{
+                width: 70%;
+                background-color: #9F9;
+                color: grey;
+                text-align: center;
+                border-radius: 20px;
+                padding: 10px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="task">
+    	<h1>Sales</h1>
+        <h2>Дисконтна програма</h2> 
+
+        <p>
+            Магазин модного одягу розпочав сезонний розпродаж, i пропонує покупцям знижку на кожен 3-iй придбаний товар. Ви обрали товари, якi хочете придбати, i бажаєте скористатися цiєю пропозицiєю, щоб максимально зекономити кошти.
+        </p>
+
+        <p>
+        Зрозумiло, що сума, яку вам доведеться заплатити, залежить вiд того, в якому
+        порядку ви купуватимете товари. Знаючи цiну кожного товару, а також вiдсоток
+        знижки, пiдрахуйте найвигiднiшу суму, за яку ви зможете придбати усi товари.
+        </p>
+        </div>        
+        <script>
+        var minSum;
+        function sales(arr, discount){
+            var numberGoodsDiscount = Math.floor(arr.length/3);
+
+                function compareNumeric(a, b) {
+                return a - b;
+                }
+                arr.sort(compareNumeric);
+
+                var arrExpensive = arr.splice(arr.length - numberGoodsDiscount, numberGoodsDiscount);
+
+                var sum = 0;
+                for(var i=0; i<arr.length; i++){
+                    sum += arr[i];
+                    }
+                var sumWithSale = 0;
+                for (var j=0; j<arrExpensive.length; j++){
+                        sumWithSale += arrExpensive[j]*(100-discount)/100; 
+                    }
+                
+
+            minSum = (Math.round((sumWithSale + sum)*100)/100).toFixed(2);
+            return minSum;
+            
+        }
+
+        sales([50, 20, 30, 17, 100], 10);
+        alert(minSum);
+
+        sales([1, 2, 3, 4, 5, 6, 7], 100);
+        alert(minSum);
+
+        sales([1, 1, 1], 33);
+        alert(minSum);
+
+        </script> 
+              
+    </body>
+</html>
